@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+  <meta charset="UTF-8" />
+  <title>Mr.Gold Kavithaigal</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Tamil font -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Tamil&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: "Noto Serif Tamil", serif;
+      background: #f5e6c8;
+      color: #3a2e1f;
+    }
+
+    header {
+      text-align: center;
+      padding: 30px 15px;
+      background: #e7d3a4;
+      border-bottom: 4px solid #b89b5e;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.3em;
+    }
+
+    .subtitle {
+      font-style: italic;
+      opacity: 0.8;
+      margin-top: 6px;
+    }
+
+    #about-btn {
+      margin-top: 12px;
+      background: none;
+      border: 1px solid #b89b5e;
+      padding: 6px 14px;
+      cursor: pointer;
+      color: #6b4f1d;
+      font-family: inherit;
+    }
+
+    main {
+      padding: 20px;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    /* Home list */
+    .kavithai-item {
+      background: #fff7e1;
+      padding: 18px;
+      margin-bottom: 15px;
+      border-left: 6px solid #b89b5e;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .kavithai-item:hover {
+      background: #f0ddb0;
+    }
+
+    /* Kavithai page */
+    #kavithai-page h2,
+    #about-page h2 {
+      border-bottom: 2px solid #b89b5e;
+      padding-bottom: 6px;
+      margin-top: 0;
+    }
+
+    pre {
+      white-space: pre-wrap;
+      font-size: 1.15em;
+      line-height: 1.8;
+    }
+
+    button.back-btn {
+      background: none;
+      border: none;
+      color: #6b4f1d;
+      font-size: 1em;
+      cursor: pointer;
+      margin-bottom: 15px;
+      padding: 0;
+      font-family: inherit;
+    }
+
+    /* About page */
+    .about-social {
+      margin: 12px 0 20px;
+      font-size: 1em;
+    }
+
+    .about-social a {
+      color: #6b4f1d;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .about-social a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px;
+      opacity: 0.6;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>📜 Mr.Gold Kavithaigal</h1>
+  <div class="subtitle">உணர்வுகளின் எழுத்து…</div>
+  <button id="about-btn">About</button>
+</header>
+
+<!-- HOME PAGE -->
+<main id="home">
+  <div id="list"></div>
+</main>
+
+<!-- KAVITHAI PAGE -->
+<main id="kavithai-page" class="hidden">
+  <button class="back-btn" id="back">← திரும்ப</button>
+  <h2 id="k-title"></h2>
+  <pre id="k-content"></pre>
+</main>
+
+<!-- ABOUT PAGE -->
+<main id="about-page" class="hidden">
+  <button class="back-btn" id="about-back">← திரும்ப</button>
+
+  <h2>Mr.Gold Kavithaigal</h2>
+
+  <div class="about-social">
+    📷 Instagram :
+    <a href="https://www.instagram.com/thangaselvam_16?igsh=Zm93NGJrb2hiaWRz" target="_blank">
+      @mr_gold_kavithaigal
+    </a>
+  </div>
+
+  <pre>
+நான் தங்கசெல்வம்.
+
+எழுதுவது எனக்கொரு பழக்கம் அல்ல,
+அது என் மௌனம் பேசும் வழி.
+
+உணர்வுகள்,
+நினைவுகள்,
+பிரிவுகள்,
+மௌனங்கள்…
+
+அவை எல்லாம்
+என் எழுத்தில்
+கவிதையாக மாறுகின்றன.
+  </pre>
+</main>
+
+<footer>
+  © Mr.Gold Kavithaigal
+</footer>
+
+<script>
+  const kavithaigal = [
+    {
+      title: "மௌனத்தின் சத்தம்",
+      content: `நீ பேசாத வார்த்தைகள்
+என் மனதில்
+என்றும் ஒலித்துக் கொண்டே இருக்கின்றன…`
+    },
+    {
+      title: "ஒரு கடைசி பார்வை",
+      content: `பிரியும் நொடியில்
+நீ பார்த்த அந்த பார்வை
+என் வாழ்நாள் கவிதை ஆனது…`
+    },
+    {
+      title: "நினைவுகள்",
+      content: `மறக்க முயன்ற நினைவுகளே
+இன்று
+என்னை எழுத வைக்கின்றன…`
+    }
+  ];
+
+  const homePage = document.getElementById("home");
+  const kavithaiPage = document.getElementById("kavithai-page");
+  const aboutPage = document.getElementById("about-page");
+
+  const list = document.getElementById("list");
+  const kTitle = document.getElementById("k-title");
+  const kContent = document.getElementById("k-content");
+
+  const backBtn = document.getElementById("back");
+  const aboutBtn = document.getElementById("about-btn");
+  const aboutBack = document.getElementById("about-back");
+
+  // Load kavithai list
+  kavithaigal.forEach(k => {
+    const div = document.createElement("div");
+    div.className = "kavithai-item";
+    div.textContent = k.title;
+
+    div.onclick = () => {
+      homePage.classList.add("hidden");
+      aboutPage.classList.add("hidden");
+      kavithaiPage.classList.remove("hidden");
+
+      kTitle.textContent = k.title;
+      kContent.textContent = k.content;
+    };
+
+    list.appendChild(div);
+  });
+
+  // Back buttons
+  backBtn.onclick = () => {
+    kavithaiPage.classList.add("hidden");
+    homePage.classList.remove("hidden");
+  };
+
+  aboutBtn.onclick = () => {
+    homePage.classList.add("hidden");
+    kavithaiPage.classList.add("hidden");
+    aboutPage.classList.remove("hidden");
+  };
+
+  aboutBack.onclick = () => {
+    aboutPage.classList.add("hidden");
+    homePage.classList.remove("hidden");
+  };
+</script>
+
+</body>
+</html>
